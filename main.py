@@ -79,6 +79,7 @@ browser.urlChanged.connect(update_url)
 browser.urlChanged.connect(loading_started)
 browser.titleChanged.connect(update_title)
 browser.loadFinished.connect(update_title)
+browser.setZoomFactor(1.3)
 
 main_window.setCentralWidget(browser)
 main_window.addToolBar(navbar)
