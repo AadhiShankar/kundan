@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtWebEngineWidgets import *
+import qdarktheme
 
 
 class MainWindow(QMainWindow):
@@ -43,13 +44,19 @@ class MainWindow(QMainWindow):
 
     def navigate_to_url(self):
         url = self.url_bar.text()
-        self.browser.setUrl(QUrl(url))
+        if (url in 'http'):
+            self.browser.setUrl(QUrl(url))
+        else:
+            self.browser.setUrl(QUrl(f'https://www.google.com/search?q={url}'))
+
 
     def update_url(self, q):
         self.url_bar.setText(q.toString())
 
 
 app = QApplication(sys.argv)
+qdarktheme.setup_theme()
+
 QApplication.setApplicationName('Browser')
 window = MainWindow()
 app.exec_()
